@@ -5,6 +5,7 @@ import { AppDataSource } from "./persistence/data-source"
 import { Routes } from "./routes"
 import HttpStatusCode from './utils/http.status.code'
 import 'dotenv/config';
+import logger from './utils/custom.es.logging'
 
 AppDataSource.initialize().then(async () => {
 

@@ -3,7 +3,7 @@ import UserResponseDto from '../models/user/user.response.dto';
 import CreateUserRequest from '../models/user/create.user.request';
 import { User } from '../persistence/entities/user';
 import { AppDataSource } from '../persistence/data-source'
-import UserMapper from '../common/mapper/user.mapper'
+import logger from '../utils/custom.es.logging';
 
 interface IUserService {
     getAll(): Promise<IBaseResponse<Array<UserResponseDto>>>;
@@ -58,7 +58,7 @@ class UserService implements IUserService {
             await this.userRepository.save(user);
             response.result = Object.assign(new UserResponseDto(), user);
         } catch (e) {
-            throw e;
+            logger.error('oops there is a problem',e);
         }
         return response;
     }
